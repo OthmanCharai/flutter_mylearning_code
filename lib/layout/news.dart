@@ -10,46 +10,49 @@ class News extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (BuildContext context) => NewsCubit()..getBusinessData()..getScinece()..getSportData(),
-      child: BlocConsumer<NewsCubit, NewsState>(
-        listener: (context, state) {},
-        builder: (context, state) {
+    return BlocConsumer<NewsCubit, NewsState>(
+      listener: (context, state) {},
+      builder: (context, state) {
         var cubit = NewsCubit.get(context);
-          return Scaffold(
-            appBar: AppBar(
-              title: Text(
-                'News App',
-                
+        return Scaffold(
+          appBar: AppBar(
+            title: Text(
+              'News App',
+            ),
+            actions: [
+              IconButton(onPressed: () {}, icon: Icon(Icons.search)),
+              IconButton(
+                  icon: Icon(Icons.settings),
+                  onPressed: () {
+                    NewsCubit.get(context).changeAppMode();
+                    print("okkrk }");
+                  },
+              )
+            ],
+          ),
+          body: cubit.screens[cubit.currentIndex],
+          bottomNavigationBar: BottomNavigationBar(
+            items: [
+              defaultBottomNavigationBarItem(
+                icon: Icons.business,
+                text: "Business",
               ),
-              actions: [
-                IconButton(onPressed: () {}, icon: Icon(Icons.search)),
-              ],
-            ),
-            body: cubit.screens[cubit.currentIndex],
-            bottomNavigationBar: BottomNavigationBar(
-              items: [
-                defaultBottomNavigationBarItem(
-                  icon: Icons.business,
-                  text: "Business",
-                ),
-                defaultBottomNavigationBarItem(
-                  icon: Icons.sports_bar_outlined,
-                  text: "Sport",
-                ),
-                defaultBottomNavigationBarItem(
-                  icon: Icons.science,
-                  text: "Scinece",
-                ),
-              ],
-              currentIndex: cubit.currentIndex,
-              onTap: (value) {
-                cubit.chnageBottomNavigationItem(value);
-              },
-            ),
-          );
-        },
-      ),
+              defaultBottomNavigationBarItem(
+                icon: Icons.sports_bar_outlined,
+                text: "Sport",
+              ),
+              defaultBottomNavigationBarItem(
+                icon: Icons.science,
+                text: "Scinece",
+              ),
+            ],
+            currentIndex: cubit.currentIndex,
+            onTap: (value) {
+              cubit.chnageBottomNavigationItem(value);
+            },
+          ),
+        );
+      },
     );
   }
 }

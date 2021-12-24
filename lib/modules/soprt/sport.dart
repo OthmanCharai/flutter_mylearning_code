@@ -19,6 +19,7 @@ class Sport extends StatelessWidget {
                     title: cubit.sports[index+1]['title'],
                     time: cubit.sports[index+1]["publishedAt"],
                     url: cubit.sports[index+1]['urlToImage'],
+                    context: context
                   ),
               separatorBuilder: (context, index) => SizedBox(
                     height: 10.0,

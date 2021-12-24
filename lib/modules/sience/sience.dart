@@ -19,6 +19,7 @@ class Sience extends StatelessWidget {
                     title: cubit.scienses[index+1]['title'],
                     time: cubit.scienses[index+1]["publishedAt"],
                     url: cubit.scienses[index+1]['urlToImage'],
+                    context: context,
                   ),
               separatorBuilder: (context, index) => SizedBox(
                     height: 10.0,

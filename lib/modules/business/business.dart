@@ -19,6 +19,7 @@ class Business extends StatelessWidget {
                     title: cubit.business[index]['title'],
                     time: cubit.business[index]["publishedAt"],
                     url: cubit.business[index]['urlToImage'],
+                    context: context
                   ),
               separatorBuilder: (context, index) => SizedBox(
                     height: 10.0,

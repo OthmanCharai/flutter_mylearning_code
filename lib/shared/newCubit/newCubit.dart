@@ -13,6 +13,7 @@ import 'package:second_project/shared/newCubit/newStates.dart';
 class NewsCubit extends Cubit<NewsState> {
   NewsCubit() : super(NewsInitialStates());
   int currentIndex = 0;
+  bool themeMode = true;
   List<Widget> screens = [
     Business(),
     Sport(),
@@ -43,6 +44,14 @@ class NewsCubit extends Cubit<NewsState> {
     }).catchError((error) {
       emit(NewsGetBusinessDataError(error));
     });
+  }
+
+  bool isDark = false;
+
+  void changeAppMode()
+  {
+    isDark = !isDark;
+    emit(AppChangeModeState());
   }
 
   void getSportData() {

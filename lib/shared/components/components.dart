@@ -148,6 +148,8 @@ Widget defaultNews({
   required String url,
   required String title,
   required String time,
+  required BuildContext context
+
 }) {
   return Padding(
     padding: const EdgeInsetsDirectional.only(
@@ -183,12 +185,7 @@ Widget defaultNews({
               Text(
                 "${title}",
                 maxLines: 4,
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 15.0,
-                  fontWeight: FontWeight.bold,
-                
-                ),
+                style: Theme.of(context).textTheme.bodyText1,
               ),
               SizedBox(
                 height: 8.0,
